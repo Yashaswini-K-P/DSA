@@ -8,13 +8,14 @@ bool issafe(int n, int row, int col, vector<string>& path){
     for(int i=0; i<8; i++){
         int nr=row+r[i];
         int nc=col+c[i];
-        if(nr>=0 && nc>=0 && nr<n && nc<n && path[nr][nc]=='.') return true;
+        if(nr>=0 && nc>=0 && nr<n && nc<n && path[nr][nc]=='K') return false;
     }
-    return false;
+    return true;
 }
 void helper(int n, int row, vector<string>& path, vector<vector<string>>& ans){
     if(row==n){
         ans.push_back(path);
+        return;
     }
     for(int i=0; i<n; i++){
         if (issafe(n, row, i, path)){
